@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import { sendVerificationEmail } from "@/lib/emailService";
-import argon2 from "argon2";
+import bcryptjs from "bcryptjs";
 
 export async function POST(request: Request) {
   await dbConnect();
@@ -10,22 +10,25 @@ export async function POST(request: Request) {
     const { username, email, password } = await request.json();
 
     // Check for already existed and verified user
-    const existingUser = await UserModel.findOne({ username, isVerified: true });
+    const existingUser = await UserModel.findOne({
+      username,
+      isVerified: true,
+    });
     if (existingUser) {
       return Response.json(
         {
           success: false,
           message: "User already exists!",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     // User by email
     const existingUserByEmail = await UserModel.findOne({ email });
 
-    const hashedPassword = await argon2.hash(password); // Encrypt Password using Argon2
-    const verifyCode = Math.floor(100000 + Math.random() * 900000).toString();  // Generate 6-digit verification code
+    const hashedPassword = bcryptjs.hashSync(password, 10); // Encrypt Password using Bcrypt
+    const verifyCode = Math.floor(100000 + Math.random() * 900000).toString(); // Generate 6-digit verification code
     const verifyCodeExpiry = new Date();
     verifyCodeExpiry.setHours(verifyCodeExpiry.getHours() + 1); // 1 hour expiry date for verification code
 
@@ -37,7 +40,7 @@ export async function POST(request: Request) {
             success: false,
             message: "User already exists!",
           },
-          { status: 500 }
+          { status: 500 },
         );
       } else {
         // Otherwise, Email not verified so update user details
@@ -73,7 +76,7 @@ export async function POST(request: Request) {
           success: false,
           message: emailResponse.message,
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -83,7 +86,7 @@ export async function POST(request: Request) {
         success: true,
         message: "User registered successfully! Please verify your email.",
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return Response.json({

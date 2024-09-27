@@ -21,15 +21,14 @@ export async function sendVerificationEmail({
       react: VerifyEmailTemplate({ username, verifyCode }),
     });
 
-    if(!emailResponse.error){
-     throw emailResponse.error
+    if (!emailResponse.error) {
+      throw emailResponse.error;
     }
 
     return {
       success: true,
       message: "Verification email sent",
     };
-    
   } catch (error) {
     return {
       success: false,
