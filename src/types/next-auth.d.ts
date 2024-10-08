@@ -8,7 +8,7 @@ declare module "next-auth" {
    * or the second parameter of the `session` callback, when using a database.
    */
   interface User {
-    _id?: unknown;
+    _id?: string;
     isVerified?: boolean;
     isAcceptingMessages?: boolean;
     username?: string;
@@ -37,7 +37,7 @@ declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
   interface JWT extends DefaultJWT {
     /** OpenID ID Token */
-    _id?: unknown;
+    _id?: string;
     isVerified?: boolean;
     isAcceptingMessages?: boolean;
     username?: string;

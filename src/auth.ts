@@ -28,9 +28,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/signin",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    jwt({ token, user }) {
       if (user) {
-        token._id = user._id?.toString();
+        token._id = user._id as string;
         token.isVerified = user.isVerified;
         token.isAcceptingMessages = user.isAcceptingMessages;
         token.username = user.username;
@@ -38,7 +38,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return token;
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       if (token) {
         session.user._id = token._id;
         session.user.isVerified = token.isAcceptingMessages;
@@ -48,7 +48,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return session;
     },
-    async authorized({ request: { nextUrl }, auth }) {
+    authorized({ request: { nextUrl }, auth }) {
       const isLoggedIn = !!auth?.user;
       const { pathname } = nextUrl;
       // If user already logged in then redirect to home page

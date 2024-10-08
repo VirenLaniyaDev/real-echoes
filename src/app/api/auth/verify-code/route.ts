@@ -20,7 +20,7 @@ export async function POST(request: Request) {
           success: false,
           message: "User not found!",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
     // Check if user already verified
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
           success: false,
           message: "User already verified!",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
           success: false,
           message: "Invalid Verification Code",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
           message:
             "Verify code has been expired, please signup again to get new verification code!",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -67,7 +67,7 @@ export async function POST(request: Request) {
         success: true,
         message: "User verified",
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return Response.json(
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
         success: false,
         message: "Error verifying user",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

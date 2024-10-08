@@ -18,7 +18,6 @@ export async function GET(request: NextRequest) {
 
   try {
     const result = UsernameQuerySchema.safeParse(queryParams);
-    // console.log(result); //TODO: Remove
 
     if (!result.success) {
       const usernameErrors = result.error.format().username?._errors || [];
