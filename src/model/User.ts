@@ -21,6 +21,7 @@ const MessageSchema: Schema<Message> = new Schema<Message>({
 
 //#region User
 export interface User extends Document {
+  _id: string;
   username: string;
   email: string;
   password: string;

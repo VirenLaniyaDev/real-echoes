@@ -12,14 +12,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       authorize: async (
         credentials: Partial<Record<"identifier" | "password", unknown>>,
-      ): Promise<User> => {
+      ): Promise<User | null> => {
         try {
           return await authenticateUser({
             identifier: credentials.identifier as string,
             password: credentials.password as string,
           });
         } catch (error) {
-          throw new Error("Something went wrong!");
+          return null;
         }
       },
     }),
@@ -52,11 +52,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       const isLoggedIn = !!auth?.user;
       const { pathname } = nextUrl;
       // If user already logged in then redirect to home page
-      if (pathname.startsWith("/signin") && isLoggedIn) {
-        return NextResponse.redirect(new URL("/", nextUrl));
+      if ((pathname.startsWith("/signin") && isLoggedIn) || pathname === "/") {
+        return NextResponse.redirect(new URL("/dashboard", nextUrl));
       }
-      // In order to access API publicly
-      if (pathname.startsWith("/api")) {
+
+      const pathsToMatch = ["/api", "/signup", "/verify-email"];
+      const shouldProcess = pathsToMatch.some(path => pathname.startsWith(path));
+      // Public access
+      if (shouldProcess) {
         return true;
       }
 
