@@ -1,191 +1,174 @@
 {
-	"info": {
-		"_postman_id": "97784090-297d-41d5-973c-2ce5cd592396",
-		"name": "Real Echoes",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29482208"
-	},
-	"item": [
-		{
-			"name": "auth",
-			"item": [
-				{
-					"name": "check-username",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/auth/check-username?username=TestUser",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"auth",
-								"check-username"
-							],
-							"query": [
-								{
-									"key": "username",
-									"value": "TestUser",
-									"description": "Username to check availability "
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "verify-code",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"TestUser\",\r\n    \"code\": \"327255\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/auth/verify-code",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"auth",
-								"verify-code"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "signUp",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"TestUser\",\r\n    \"email\": \"test@test.abc\",\r\n    \"password\": \"Test@123\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/signUp",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"signUp"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "accept-messages",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/accept-messages",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"accept-messages"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "accept-messages",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"acceptMessages\": true\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/accept-messages",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"accept-messages"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get-messages",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/get-messages",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"get-messages"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "send-message",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"TestUser\",\r\n    \"content\": \"Be Positive\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/send-message",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"send-message"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "97784090-297d-41d5-973c-2ce5cd592396",
+    "name": "Real Echoes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29482208"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "check-username",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/auth/check-username?username=TestUser",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "check-username"],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "TestUser",
+                  "description": "Username to check availability "
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verify-code",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"TestUser\",\r\n    \"code\": \"327255\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/verify-code",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "verify-code"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "signUp",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"TestUser\",\r\n    \"email\": \"test@test.abc\",\r\n    \"password\": \"Test@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/signUp",
+          "host": ["{{base_url}}"],
+          "path": ["signUp"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accept-messages",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/accept-messages",
+          "host": ["{{base_url}}"],
+          "path": ["accept-messages"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accept-messages",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"acceptMessages\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/accept-messages",
+          "host": ["{{base_url}}"],
+          "path": ["accept-messages"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get-messages",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/get-messages",
+          "host": ["{{base_url}}"],
+          "path": ["get-messages"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "send-message",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"TestUser\",\r\n    \"content\": \"Be Positive\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/send-message",
+          "host": ["{{base_url}}"],
+          "path": ["send-message"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete-message",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/delete-message/67042799e6ed2af3b0d63c2a",
+          "host": ["{{base_url}}"],
+          "path": ["delete-message", "67042799e6ed2af3b0d63c2a"]
+        }
+      },
+      "response": []
+    }
+  ]
 }

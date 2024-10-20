@@ -101,7 +101,7 @@ const SignUp = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof signUpSchema>> = async (
-    data
+    data,
   ) => {
     setIsSubmitting(true);
     try {
@@ -126,8 +126,8 @@ const SignUp = () => {
           description: axiosError.message,
           variant: "destructive",
         });
+        setIsSubmitting(false);
       }
-      setIsSubmitting(false);
     }
   };
   //#endregion

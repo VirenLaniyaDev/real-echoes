@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import AuthProvider from "@/context/AuthProvider";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -23,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/icon.png" type="image/png" sizes="32x32" />
+      </head>
       <AuthProvider>
         <body className={`${poppins.className} antialiased`}>
           {children}

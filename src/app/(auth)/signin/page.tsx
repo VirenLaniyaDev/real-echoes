@@ -42,7 +42,7 @@ const SignIn = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof signInSchema>> = async (
-    data
+    data,
   ) => {
     setIsSubmitting(true);
     try {
@@ -71,7 +71,6 @@ const SignIn = () => {
       if (response) router.push("/dashboard");
       setIsSubmitting(false);
     } catch (error) {
-      console.log("Viren Append" + error);
       setIsSubmitting(false);
     }
   };
@@ -153,7 +152,7 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <Button className="w-full">
+              <Button className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
@@ -163,7 +162,7 @@ const SignIn = () => {
 
               <div className="text-center">
                 <p className="mt-2 text-sm text-gray-600">
-                  Don't have account?{" "}
+                  Don&apos;t have account?{" "}
                   <Link
                     href="/signup"
                     className="font-medium text-indigo-600 hover:text-indigo-700"

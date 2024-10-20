@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +13,8 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      {children}
+      <Navbar />
+      <main className="min-h-screen">{children}</main>
     </>
   );
 }

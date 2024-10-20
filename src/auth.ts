@@ -56,8 +56,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return NextResponse.redirect(new URL("/dashboard", nextUrl));
       }
 
-      const pathsToMatch = ["/api", "/signup", "/verify-email"];
-      const shouldProcess = pathsToMatch.some(path => pathname.startsWith(path));
+      // if(pathname.startsWith("/icon.png")){
+      //   NextResponse.next();
+      // }
+
+      const pathsToMatch = ["/api", "/signup", "/verify-email", "/u"];
+      const shouldProcess = pathsToMatch.some((path) =>
+        pathname.startsWith(path),
+      );
       // Public access
       if (shouldProcess) {
         return true;

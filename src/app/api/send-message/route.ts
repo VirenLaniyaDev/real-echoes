@@ -1,25 +1,9 @@
-import { auth } from "@/auth";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import { Message } from "@/model/User";
-import { User } from "next-auth";
 
 export async function POST(request: Request) {
   await dbConnect();
-
-  const session = await auth();
-  const user: User = session?.user as User;
-
-  // Check for Authenticated User
-  if (!session || !user) {
-    return Response.json(
-      {
-        success: false,
-        message: "Not Authenticated",
-      },
-      { status: 401 },
-    );
-  }
 
   try {
     const { username, content } = await request.json();

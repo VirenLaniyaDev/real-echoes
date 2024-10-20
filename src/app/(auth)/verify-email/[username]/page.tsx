@@ -43,7 +43,7 @@ const VerifyEmail = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof verifySchema>> = async (
-    data
+    data,
   ) => {
     setIsSubmitting(true);
     try {
