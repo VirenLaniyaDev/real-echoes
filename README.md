@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Real Echoes
 
-First, run the development server:
+Real Echoes is a web application designed to let users receive anonymous messages through a personalized public profile link. It provides a safe and simple platform where anyone can send messages without revealing their identity. Users can securely manage and view their received messages through an intuitive interface.
+
+
+## Tech Stack
+
+**Next.js (TypeScript)** for fast and efficient server-side rendering and dynamic front-end experiences with.
+
+**MongoDB** as the database for storing user information and anonymous messages.
+
+**Auth.js** for handling authentication and user identity, ensuring only verified users can create and manage their profiles.
+
+**Resend** for seamlessly sending notification emails to users to verify their newly registered email.
+
+## Features
+
+- User Registration with Email Verification
+- Authentication & Authorization
+- User Dashboard
+- Manage received messages
+- Enable/Disable anonymous accept messages
+
+## Upcoming Features
+
+- AI Integration to provide Message suggestions
+- Dark theme
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`ENVIRONMENT` development or production
+
+`MONGODB_URI` Mongo DB Connection URI
+
+`RESEND_APIKEY` Resend API Key
+
+`AUTH_SECRET` Auth secret generate using `npx auth`
+
+
+## Installation
+
+To Install project dependencies and packages, Run following command in terminal. Make sure terminal path is your project directory path.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  npm install
+```
+    
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/VirenLaniyaDev/real-echoes.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd real-echoes
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Install dependencies
 
-## Learn More
+```bash
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the server locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Authors
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [@VirenLaniyaDev](https://www.github.com/VirenLaniyaDev)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
