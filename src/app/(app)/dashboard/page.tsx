@@ -14,12 +14,12 @@ import { toast } from "@/hooks/use-toast";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { useSession } from "next-auth/react";
+import { useCurrentSession } from "@/hooks/useCurrentSession";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 const Dashboard = () => {
-  const session = useSession();
+  const { session } = useCurrentSession();  // returns session and status
 
   const [isSwitchLoading, setIsSwitchLoading] = useState<boolean>(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   //#region Copy Profile Link
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
-  const profileLink = `${baseUrl}/u/${session?.data?.user.username}`;
+  const profileLink = `${baseUrl}/u/${session?.user.username}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(profileLink);
@@ -129,7 +129,7 @@ const Dashboard = () => {
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 mt-10 space-y-10">
       <div className="welcome-text">
         <h2 className="text-3xl font-semibold">
-          Welcome, {session.data?.user.username}
+          Welcome, {session?.user.username}
         </h2>
       </div>
       <div className="copy-link space-y-3">
